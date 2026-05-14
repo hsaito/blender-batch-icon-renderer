@@ -1,0 +1,16 @@
+schema_version = "1.0.0"
+
+id = "batch_icon_renderer"
+version = "1.0.0"
+name = "Batch Icon Renderer"
+tagline = "Renders icons in multiple sizes"
+maintainer = "Hideki Saito"
+type = "add-on"
+
+blender_version_min = "4.2.0"
+
+license = ["SPDX:GPL-2.0-or-later"]
+
+website = "https://github.com/hsaito/blender-batch-icon-renderer"
+documentation = "https://github.com/hsaito/blender-batch-icon-renderer/blob/master/README.md"
+tracker = "https://github.com/hsaito/blender-batch-icon-renderer/issues"
