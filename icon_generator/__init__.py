@@ -1,7 +1,7 @@
 bl_info = {
     "name": "Batch Icon Renderer (Stable)",
     "author": "Copilot & Hideki",
-    "version": (1, 0, 0),
+    "version": (1, 1, 0),
     "blender": (3, 0, 0),
     "location": "View3D > N Panel > Icon Render",
     "description": "Render multiple icon sizes (Windows common) reliably without skipping",
@@ -174,7 +174,7 @@ class ICONRENDER_PT_panel(Panel):
         layout.prop(props, "prefix")
         layout.prop(props, "save_dir")
 
-        layout.label(text="Sizes (Windows common):")
+        layout.label(text="Sizes (Windows common)")
         col = layout.column(align=True)
         col.prop(props, "size_512")
         col.prop(props, "size_256")
@@ -189,7 +189,7 @@ class ICONRENDER_PT_panel(Panel):
         col.prop(props, "size_16")
 
         layout.separator()
-        layout.operator("iconrender.batch_render", icon='RENDER_STILL')
+        layout.operator("iconrender.batch_render", text=bpy.app.translations.pgettext("Render Icons"), icon='RENDER_STILL')
 
 
 # ==========================================================
@@ -203,12 +203,28 @@ classes = (
     ICONRENDER_PT_panel,
 )
 
+translation_dict = {
+    "ja_JP": {
+        # Operator ラベル・説明
+        ("*", "File name prefix"): "ファイル名の接頭辞",
+        ("*", "Save location"): "保存場所",
+        ("*", "Sizes (Windows common)"): "サイズ（Windows一般）",
+        ("*", "All icon renders complete"): "すべてのアイコンレンダリングが完了しました",
+        # Panel ラベル
+        ("*", "Icon Render"): "アイコンレンダリング",
+        # Operator ボタン
+        ("*", "Render Icons"): "アイコンをレンダリング",
+    }
+}
+
 def register():
     for cls in classes:
         bpy.utils.register_class(cls)
     bpy.types.Scene.iconrender_props = PointerProperty(type=ICONRENDER_Properties)
+    bpy.app.translations.register(__name__, translation_dict)
 
 def unregister():
+    bpy.app.translations.unregister(__name__)
     for cls in reversed(classes):
         bpy.utils.unregister_class(cls)
     del bpy.types.Scene.iconrender_props

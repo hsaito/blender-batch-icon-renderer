@@ -1,7 +1,7 @@
 schema_version = "1.0.0"
 
 id = "batch_icon_renderer"
-version = "1.0.0"
+version = "1.1.0"
 name = "Batch Icon Renderer"
 tagline = "Renders icons in multiple sizes"
 maintainer = "Hideki Saito"
